@@ -25,3 +25,4 @@ runs:
     - "\"${{ inputs.osAction }}\""
     - "\"${{ inputs.osCultures }}\""
     - "\"${{ inputs.osXFProject }}\""
+    - "\"${{ inputs.osSourcesDir }}\""
