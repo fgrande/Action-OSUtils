@@ -1,13 +1,13 @@
-name: 'Container Action Template (PowerShell edition)'
-description: 'Get started with Container actions using PowerShell'
-author: 'TylerLeonhardt'
+name: 'OneStream Utils'
+description: 'XFProject related OneStream utilities'
+author: 'GrnFba'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    required: false
-    default: 'world'
+  osAction:
+    description: 'Action to execute'
+    required: true
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.osAction }}
