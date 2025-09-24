@@ -9,7 +9,7 @@ inputs:
   osCultures:
     description: 'Cultures to check'
     required: false
-    default: 'it-IT,en-US,fr-FR'    
+    default: "it-IT,en-US,fr-FR"
 runs:
   using: 'docker'
   image: 'Dockerfile'
