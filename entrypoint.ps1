@@ -9,6 +9,8 @@ Write-Host "Parameters"
 Write-Host "osAction     : " $osAction
 Write-Host "osProjectDir : " $osProjectDir
 
+Get-ChildItem -Path "/home"
+
 switch ($osAction.ToLower())
 {
     'chkstrings'
