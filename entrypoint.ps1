@@ -9,7 +9,11 @@ Write-Host "Parameters"
 Write-Host "osAction     : " $osAction
 Write-Host "osProjectDir : " $osProjectDir
 
-Get-ChildItem -Path "/" -Recurse
+Get-ChildItem -Path "/github" -Recurse
+
+Write-Host "================="
+
+Get-ChildItem Env:
 
 switch ($osAction.ToLower())
 {
