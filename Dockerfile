@@ -13,6 +13,4 @@ COPY ./utils/StringsManager.psm1 /usr/local/share/powershell/Modules/StringsMana
 
 COPY entrypoint.ps1 /entrypoint.ps1
 
-#RUN pwsh -c "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force"
-
 ENTRYPOINT ["pwsh", "-Command", "/entrypoint.ps1"]

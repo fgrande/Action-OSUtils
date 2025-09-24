@@ -3,19 +3,26 @@ Import-Module OSZipper
 Import-Module DocumentationManager
 
 $osAction = $args[0]
-$osProjectDir = $args[1]
+$osCultures = $args[1]
 
 Write-Host "Parameters"
-Write-Host "osAction     : " $osAction
-Write-Host "osProjectDir : " $osProjectDir
+Write-Host "osAction   : " $osAction
+Write-Host "osCultures : " $osCultures
 
 switch ($osAction.ToLower())
 {
     'chkstrings'
     {
         Write-Host "Start Check"
-        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR,ru -baseDir $Env:GITHUB_WORKSPACE
+        $chkStringsResult = Show-OSStrings -onlyMissing -cultures $osCultures -baseDir $Env:GITHUB_WORKSPACE
         Write-Host $chkStringsResult
         Write-Host "Finish Check"
+
+        if ($chkStringsResult)
+        {
+            exit 1
+        }
     }
 }
+
+exit 0

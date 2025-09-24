@@ -6,13 +6,13 @@ inputs:
     description: 'Action to execute'
     required: true
     default: ''
-  osProjectDir:
-    description: 'xfProject Main Directory'
+  osCultures:
+    description: 'Cultures to check'
     required: false
-    default: ${{ github.workspace }}
+    default: 'it-IT,en-US,fr-FR'    
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - "\"${{ inputs.osAction }}\""
-    - "\"${{ inputs.osProjectDir }}\""
+    - "\"${{ inputs.osCultures }}\""

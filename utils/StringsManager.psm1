@@ -35,7 +35,7 @@ function Show-OSStrings
 		$onlyMissing = $false
 	}
 
-	Write-Output "Base Dir: " $baseDir
+	#Write-Output "Base Dir: " $baseDir
 
 	$dirToCheck = $baseDir
 	if ([string]::IsNullOrEmpty($dirToCheck))
@@ -43,8 +43,8 @@ function Show-OSStrings
 		$dirToCheck = Get-Location
 	}
 	
-	Write-Output "Checking Dir: " $dirToCheck
-	Write-Output "Cultures to Check : " $cultures
+	#Write-Output "Checking Dir: " $dirToCheck
+	#Write-Output "Cultures to Check : " $cultures
 
 	foreach ($file in Get-ChildItem -Path $dirToCheck -Recurse *.xml | Where-Object { Select-String "stringResource" $_ -Quiet })
 	{
