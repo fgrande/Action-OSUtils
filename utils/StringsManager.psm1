@@ -29,8 +29,8 @@ function Show-OSStrings
 
 	$culturesArr = $cultures.Split(',')
 
-	Write-Host 'Cultures is a ' $culturesArr.GetType()
-	Write-Host 'Cultures length is  ' $culturesArr.Length
+	#Write-Host 'Cultures is a ' $culturesArr.GetType()
+	#Write-Host 'Cultures length is  ' $culturesArr.Length
 	
 	[int32] $cultureCounter = $culturesArr ? $culturesArr.Length : 0
 	$culturesLower = $culturesArr ? $culturesArr.ToLower() : @()
@@ -40,7 +40,7 @@ function Show-OSStrings
 		$onlyMissing = $false
 	}
 
-	Write-Host "Only Missing : " $onlyMissing
+	#Write-Host "Only Missing : " $onlyMissing
 
 	#Write-Output "Base Dir: " $baseDir
 
@@ -50,8 +50,8 @@ function Show-OSStrings
 		$dirToCheck = Get-Location
 	}
 	
-	Write-Output "Checking Dir: " $dirToCheck
-	Write-Output "Cultures to Check : " $cultures
+	#Write-Output "Checking Dir: " $dirToCheck
+	#Write-Output "Cultures to Check : " $cultures
 
 	foreach ($file in Get-ChildItem -Path $dirToCheck -Recurse *.xml | Where-Object { Select-String "stringResource" $_ -Quiet })
 	{
