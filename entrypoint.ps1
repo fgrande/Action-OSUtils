@@ -1,8 +1,8 @@
-Import-Module -Name ./utils/StringsManager.psm1
-Import-Module -Name ./utils/OSZipper.psm1
-Import-Module -Name ./utils/DocumentationManager.psm1
+Import-Module -Name ./StringsManager.psm1
+Import-Module -Name ./OSZipper.psm1
+Import-Module -Name ./DocumentationManager.psm1
 
-Write-Host "All Args are : $args"
+Write-Host "All Args are : " $args
 
-Write-Host "I should manage : $args[0]"
-Write-Host "Additional Param is : $args[1]"
+Write-Host "I should manage : " $args[0]
+Write-Host "Additional Param is : " $args[1]
