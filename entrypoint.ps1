@@ -9,18 +9,12 @@ Write-Host "Parameters"
 Write-Host "osAction     : " $osAction
 Write-Host "osProjectDir : " $osProjectDir
 
-Get-ChildItem -Path "/github" -Recurse
-
-Write-Host "================="
-
-Get-ChildItem Env:
-
 switch ($osAction.ToLower())
 {
     'chkstrings'
     {
         Write-Host "Start Check"
-        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR -baseDir $osProjectDir
+        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR -baseDir $Env:GITHUB_WORKSPACE
         Write-Host $chkStringsResult
         Write-Host "Finish Check"
     }
