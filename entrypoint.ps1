@@ -9,7 +9,7 @@ Write-Host "Parameters"
 Write-Host "osAction     : " $osAction
 Write-Host "osProjectDir : " $osProjectDir
 
-Get-ChildItem -Path "/home"
+Get-ChildItem -Path "/home" -Recurse
 
 switch ($osAction.ToLower())
 {
