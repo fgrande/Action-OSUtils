@@ -10,9 +10,14 @@ inputs:
     description: 'Cultures to check'
     required: false
     default: "it-IT,en-US,fr-FR"
+  osXFProject:
+    description: 'XFProject Name (with extension)'
+    required: false
+    default: ''    
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - "\"${{ inputs.osAction }}\""
     - "\"${{ inputs.osCultures }}\""
+    - "\"${{ inputs.osXFProject }}\""
