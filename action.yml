@@ -14,5 +14,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - """${{ inputs.osAction }}"""
-    - """${{ inputs.osTempName }}"""
+    - "\"${{ inputs.osAction }}\""
+    - "\"${{ inputs.osTempName }}\""
