@@ -1,0 +1,13 @@
+name: 'Container Action Template (PowerShell edition)'
+description: 'Get started with Container actions using PowerShell'
+author: 'TylerLeonhardt'
+inputs: 
+  myInput:
+    description: 'Input to use'
+    required: false
+    default: 'world'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.myInput }}
