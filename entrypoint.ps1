@@ -11,11 +11,11 @@ Write-Host "osProjectDir : " $osProjectDir
 
 switch ($osAction.ToLower())
 {
-    "chkstrings"
+    'chkstrings'
     {
-        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR
+        Write-Host "Start Check"
+        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR -baseDir $osProjectDir
         Write-Host $chkStringsResult
+        Write-Host "Finish Check"
     }
 }
-
-Write-Host $Env:PSModulePath
