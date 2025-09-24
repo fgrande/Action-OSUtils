@@ -35,6 +35,8 @@ function Show-OSStrings
 		$onlyMissing = $false
 	}
 
+	Write-Output "Base Dir: " $baseDir
+
 	$dirToCheck = $baseDir
 	if ([string]::IsNullOrEmpty($dirToCheck))
 	{
