@@ -26,6 +26,9 @@ function Show-OSStrings
 	)
 	
 	$result = @()
+
+	Write-Host 'Cultures is a ' $cultures.GetType()
+	Write-Host 'Cultures length is  ' $cultures.Length
 	
 	[int32] $cultureCounter = $cultures ? $cultures.Length : 0
 	$culturesLower = $cultures ? $cultures.ToLower() : @()
@@ -35,6 +38,8 @@ function Show-OSStrings
 		$onlyMissing = $false
 	}
 
+	Write-Host "Only Missing : " $onlyMissing
+	
 	#Write-Output "Base Dir: " $baseDir
 
 	$dirToCheck = $baseDir
