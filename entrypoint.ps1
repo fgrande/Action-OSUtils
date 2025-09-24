@@ -3,9 +3,11 @@ Import-Module OSZipper
 Import-Module DocumentationManager
 
 $osAction = $args[0]
+$osProjectDir = $args[1]
 
 Write-Host "Parameters"
-Write-Host "osAction : " $osAction
+Write-Host "osAction     : " $osAction
+Write-Host "osProjectDir : " $osProjectDir
 
 switch ($osAction.ToLower())
 {

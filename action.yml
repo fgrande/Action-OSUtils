@@ -6,13 +6,13 @@ inputs:
     description: 'Action to execute'
     required: true
     default: ''
-  osTempName:
-    description: 'TempName'
+  osProjectDir:
+    description: 'xfProject Main Directory'
     required: false
-    default: 'xxxyyyzzz'
+    default: ${{ github.workspace }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - "\"${{ inputs.osAction }}\""
-    - "\"${{ inputs.osTempName }}\""
+    - "\"${{ inputs.osProjectDir }}\""

@@ -13,7 +13,7 @@ If specified, only strings with at least a missing translation will be reported.
 Comma-Separated cultures to look for 
 
 .Example
-PS> Show-OSStrings -onlyMissing -cultures it-IT,en-US
+PS> Show-OSStrings -onlyMissing -cultures it-IT,en-US -baseDir c:\works\project
 
 #>
 
@@ -21,7 +21,8 @@ function Show-OSStrings
 {
 	Param(
 	  [switch] $onlyMissing,
-	  [string[]] $cultures
+	  [string[]] $cultures,
+	  [string] $baseDir
 	)
 	
 	$result = @()
@@ -33,10 +34,17 @@ function Show-OSStrings
 	{
 		$onlyMissing = $false
 	}
-	
-	Write-Output "Checking Cultures : " $cultures
 
-	foreach ($file in Get-ChildItem -Recurse *.xml | Where-Object { Select-String "stringResource" $_ -Quiet })
+	$dirToCheck = $baseDir
+	if ([string]::IsNullOrEmpty($dirToCheck))
+	{
+		$dirToCheck = Get-Location
+	}
+	
+	Write-Output "Checking Dir: " $dirToCheck
+	Write-Output "Cultures to Check : " $cultures
+
+	foreach ($file in Get-ChildItem -Path $dirToCheck -Recurse *.xml | Where-Object { Select-String "stringResource" $_ -Quiet })
 	{
 		#Write-Output "Found File $($file.FullName)"
 			
