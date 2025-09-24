@@ -30,6 +30,8 @@ switch ($osAction.ToLower())
         Write-Host "Extract Sources"
         $xfprojectLocation = "${Env:GITHUB_WORKSPACE}/${osXFProject}"
         Write-Host "Location : " $xfprojectLocation
+
+        Get-ChildItem -Path ${Env:GITHUB_WORKSPACE}
         #format-OSSources $xfprojectLocation c:\temp\test
     }
 }
