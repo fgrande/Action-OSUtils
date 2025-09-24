@@ -13,7 +13,11 @@ inputs:
   osXFProject:
     description: 'XFProject Name (with extension)'
     required: false
-    default: ''    
+    default: ''
+  osSourcesDir:
+    description: 'Sources extraction destination Dir (on project root)'
+    required: false
+    default: 'TempSrc'
 runs:
   using: 'docker'
   image: 'Dockerfile'

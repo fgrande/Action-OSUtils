@@ -5,11 +5,13 @@ Import-Module DocumentationManager
 $osAction = $args[0]
 $osCultures = $args[1]
 $osXFProject = $args[2]
+$osSourcesDir = $args[3]
 
 Write-Host "Parameters"
 Write-Host "osAction    : " $osAction
 Write-Host "osCultures  : " $osCultures
 Write-Host "osXFProject : " $osXFProject
+Write-Host "osSourcesDir : " $osSourcesDir
 
 switch ($osAction.ToLower())
 {
@@ -31,8 +33,11 @@ switch ($osAction.ToLower())
         $xfprojectLocation = "${Env:GITHUB_WORKSPACE}/${osXFProject}"
         Write-Host "Location : " $xfprojectLocation
 
-        Get-ChildItem -Path ${Env:GITHUB_WORKSPACE}
-        #format-OSSources $xfprojectLocation c:\temp\test
+        $sourcesLocation = "${Env:GITHUB_WORKSPACE}/${osSourcesDir}"
+
+        format-OSSources $xfprojectLocation $sourcesLocation
+
+        Get-ChildItem $sourcesLocation
     }
 }
 
