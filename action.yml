@@ -6,8 +6,13 @@ inputs:
     description: 'Action to execute'
     required: true
     default: ''
+  osTempName:
+    description: 'TempName'
+    required: false
+    default: 'xxxyyyzzz'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.osAction }}
+    - ${{ inputs.osTempName }}
