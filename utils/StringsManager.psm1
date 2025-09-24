@@ -34,7 +34,7 @@ function Show-OSStrings
 		$onlyMissing = $false
 	}
 	
-	Write-Output $cultures
+	Write-Output "Checking Cultures : " $cultures
 
 	foreach ($file in Get-ChildItem -Recurse *.xml | Where-Object { Select-String "stringResource" $_ -Quiet })
 	{

@@ -1,10 +1,19 @@
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force
+Import-Module StringsManager
+Import-Module OSZipper
+Import-Module DocumentationManager
 
-Import-Module -Name StringsManager.psm1
-Import-Module -Name OSZipper.psm1
-Import-Module -Name DocumentationManager.psm1
+$osAction = $args[0]
 
-Write-Host "All Args are : " $args
+Write-Host "Parameters"
+Write-Host "osAction : " $osAction
 
-Write-Host "I should manage : " $args[0]
-Write-Host "Additional Param is : " $args[1]
+switch ($osAction.ToLower())
+{
+    "chkstrings"
+    {
+        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR
+        Write-Host $chkStringsResult
+    }
+}
+
+Write-Host $Env:PSModulePath
