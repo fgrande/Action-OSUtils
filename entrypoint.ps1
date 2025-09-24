@@ -14,7 +14,7 @@ switch ($osAction.ToLower())
     'chkstrings'
     {
         Write-Host "Start Check"
-        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR -baseDir $Env:GITHUB_WORKSPACE
+        $chkStringsResult = Show-OSStrings -onlyMissing -cultures it-IT,en-US,fr-FR,ru -baseDir $Env:GITHUB_WORKSPACE
         Write-Host $chkStringsResult
         Write-Host "Finish Check"
     }
