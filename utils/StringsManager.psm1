@@ -21,17 +21,19 @@ function Show-OSStrings
 {
 	Param(
 	  [switch] $onlyMissing,
-	  [string[]] $cultures,
+	  [string] $cultures,
 	  [string] $baseDir
 	)
 	
 	$result = @()
 
-	Write-Host 'Cultures is a ' $cultures.GetType()
-	Write-Host 'Cultures length is  ' $cultures.Length
+	$culturesArr = $cultures.Split(',')
+
+	Write-Host 'Cultures is a ' $culturesArr.GetType()
+	Write-Host 'Cultures length is  ' $culturesArr.Length
 	
-	[int32] $cultureCounter = $cultures ? $cultures.Length : 0
-	$culturesLower = $cultures ? $cultures.ToLower() : @()
+	[int32] $cultureCounter = $culturesArr ? $culturesArr.Length : 0
+	$culturesLower = $culturesArr ? $culturesArr.ToLower() : @()
 
 	if ($cultureCounter -eq 0)
 	{
@@ -39,7 +41,7 @@ function Show-OSStrings
 	}
 
 	Write-Host "Only Missing : " $onlyMissing
-	
+
 	#Write-Output "Base Dir: " $baseDir
 
 	$dirToCheck = $baseDir
@@ -59,7 +61,7 @@ function Show-OSStrings
 
 		if ($cultureCounter -gt 0)
 		{
-			foreach ($c in $cultures)
+			foreach ($c in $culturesArr)
 			{
 				$dbString | Add-Member -Name $c -MemberType Noteproperty -Value ""
 			}
