@@ -1,3 +1,5 @@
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force
+
 Import-Module -Name ./StringsManager.psm1
 Import-Module -Name ./OSZipper.psm1
 Import-Module -Name ./DocumentationManager.psm1
