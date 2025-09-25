@@ -8,10 +8,10 @@ $osXFProject = $args[2]
 $osSourcesDir = $args[3]
 
 Write-Host "Parameters"
-Write-Host "osAction    : " $osAction
-Write-Host "osCultures  : " $osCultures
-Write-Host "osXFProject : " $osXFProject
-Write-Host "osSourcesDir : " $osSourcesDir
+Write-Host "osAction         : " $osAction
+Write-Host "osCultures       : " $osCultures
+Write-Host "osXFProject      : " $osXFProject
+Write-Host "osSourcesTempDir : " $osSourcesTempDir
 
 switch ($osAction.ToLower())
 {
@@ -33,7 +33,7 @@ switch ($osAction.ToLower())
         $xfprojectLocation = "${Env:GITHUB_WORKSPACE}/${osXFProject}"
         Write-Host "Location : " $xfprojectLocation
 
-        $sourcesLocation = "${Env:GITHUB_WORKSPACE}/${osSourcesDir}"
+        $sourcesLocation = "${Env:GITHUB_WORKSPACE}/${osSourcesTempDir}"
 
         format-OSSources $xfprojectLocation $sourcesLocation
 
