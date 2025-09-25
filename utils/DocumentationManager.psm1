@@ -107,10 +107,17 @@ function Format-OSSources
 		$sourceCode | Out-File -FilePath $finalFullName
 	}
 
-	# Get all source files
+	# Get all CS source files
 	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.cs)
 	{
-		#Write-Host $file
+		Write-Host $file " => " $destPath "\n"
+		Copy-Item $file -Destination $destPath
+	}
+
+	# Get all VB source files
+	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.vb)
+	{
+		Write-Host $file " => " $destPath "\n"
 		Copy-Item $file -Destination $destPath
 	}
 
