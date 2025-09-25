@@ -75,6 +75,20 @@ function Format-OSSources
 	# Get BasePath (the path in which the XFProject file is included)
 	$basePath = Split-Path -Path $sourceXFProject -Parent -Resolve
 
+	# Get all CS source files (from assemblies)
+	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.cs)
+	{
+		#Write-Host $file " => " $destPath "\n"
+		Copy-Item $file -Destination $destPath
+	}
+
+	# Get all VB source files (from assemblies)
+	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.vb)
+	{
+		#Write-Host $file " => " $destPath "\n"
+		Copy-Item $file -Destination $destPath
+	}
+
 	# Get all Business Rules Defined
 	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.xml | Where-Object { Select-String "<projectItemType>BusinessRule</projectItemType>" $_ -Quiet })
 	{
@@ -103,26 +117,10 @@ function Format-OSSources
 		$finalFileName = $brFileName + $extension
 		$finalFullName = Join-Path -Path $destPath -ChildPath $finalFileName
 
-		Write-Host "Writing to : " $finalFullName
+		#Write-Host "Writing to : " $finalFullName
 	
 		# Put the code in the destination file
 		$sourceCode | Out-File -FilePath $finalFullName
-	}
-
-	Write-Host "============================================"
-
-	# Get all CS source files
-	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.cs)
-	{
-		Write-Host $file " => " $destPath "\n"
-		Copy-Item $file -Destination $destPath
-	}
-
-	# Get all VB source files
-	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.vb)
-	{
-		Write-Host $file " => " $destPath "\n"
-		Copy-Item $file -Destination $destPath
 	}
 
 	# Now all files and BRules are in dest folder.
