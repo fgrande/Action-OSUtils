@@ -102,10 +102,14 @@ function Format-OSSources
 
 		$finalFileName = $brFileName + $extension
 		$finalFullName = Join-Path -Path $destPath -ChildPath $finalFileName
+
+		Write-Host "Writing to : " $finalFullName
 	
 		# Put the code in the destination file
 		$sourceCode | Out-File -FilePath $finalFullName
 	}
+
+	Write-Host "============================================"
 
 	# Get all CS source files
 	foreach ($file in Get-ChildItem -Path $basePath -Recurse *.cs)
