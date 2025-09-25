@@ -15,9 +15,17 @@ inputs:
     required: false
     default: ''
   osSourcesTempDir:
-    description: 'Sources extraction destination Temp Dir (on project root)'
+    description: 'Sources extraction destination Temp Dir (on project root, for GetSources)'
     required: false
     default: 'TempSrc'
+  osNamespacePrefix:
+    description: 'NameSpace to substitute to __WsNamespacePrefix (GetSources)'
+    required: false
+    default: ''
+  osAssemblyName:
+    description: 'Assembly Name to substitute to __WsAssemblyName (GetSources)'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -26,3 +34,6 @@ runs:
     - "\"${{ inputs.osCultures }}\""
     - "\"${{ inputs.osXFProject }}\""
     - "\"${{ inputs.osSourcesTempDir }}\""
+    - "\"${{ inputs.osNamespacePrefix }}\""
+    - "\"${{ inputs.osAssemblyName }}\""
+
