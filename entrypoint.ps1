@@ -5,7 +5,7 @@ Import-Module DocumentationManager
 $osAction = $args[0]
 $osCultures = $args[1]
 $osXFProject = $args[2]
-$osSourcesDir = $args[3]
+$osSourcesTempDir = $args[3]
 
 Write-Host "Parameters"
 Write-Host "osAction         : " $osAction
