@@ -7,11 +7,11 @@ inputs:
     required: true
     default: ''
   osCultures:
-    description: 'Cultures to check'
+    description: 'Cultures to check (ChkStrings)'
     required: false
     default: "it-IT,en-US,fr-FR"
   osXFProject:
-    description: 'XFProject Name (with extension)'
+    description: 'XFProject Name (with extension, for GetSources)'
     required: false
     default: ''
   osSourcesTempDir:
@@ -19,11 +19,11 @@ inputs:
     required: false
     default: 'TempSrc'
   osNamespacePrefix:
-    description: 'NameSpace to substitute to __WsNamespacePrefix (GetSources)'
+    description: 'NameSpace to substitute __WsNamespacePrefix (GetSources)'
     required: false
     default: ''
   osAssemblyName:
-    description: 'Assembly Name to substitute to __WsAssemblyName (GetSources)'
+    description: 'Assembly Name to substitute __WsAssemblyName (GetSources)'
     required: false
     default: ''
 runs:
