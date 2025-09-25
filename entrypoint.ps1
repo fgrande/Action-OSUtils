@@ -21,25 +21,19 @@ switch ($osAction.ToLower())
 {
     'chkstrings'
     {
-        Write-Host "Start Check"
+        #Write-Host "Start Check"
 
         $chkStringsResult = Show-OSStrings -onlyMissing -cultures $osCultures -baseDir $Env:GITHUB_WORKSPACE
+        
+        #Write-Host "Finish Check"
 
         if ($chkStringsResult)
         {
             Write-Host "Result: " $chkStringsResult
-        }
-        else
-        {
-            Write-Host "OK ! No missing Strings !"
-        }
-        
-        Write-Host "Finish Check"
-
-        if ($chkStringsResult)
-        {
             exit 1
         }
+
+        Write-Host "OK ! No missing Strings !"
     }
     'getsources'
     {
