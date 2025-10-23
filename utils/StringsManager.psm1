@@ -69,7 +69,13 @@ function Show-OSStrings
 			
 		$mainContent = [xml](Get-Content -Path $file.FullName)
 		[xml]$cdata = $mainContent.XFProjectFile.content."#cdata-section"
+
+		if (!$cdata.stringResource.name)
+		{
+			continue
+		}
 	
+		$dbString | Add-Member -Name "FileName" -MemberType Noteproperty -Value $file.FullName
 		$dbString | Add-Member -Name "Name" -MemberType Noteproperty -Value $cdata.stringResource.name
 		$dbString | Add-Member -Name "WorkSpace" -MemberType Noteproperty -Value $cdata.stringResource.workspace
 		$dbString | Add-Member -Name "MaintenanceUnit" -MemberType Noteproperty -Value $cdata.stringResource.maintenanceUnit
@@ -137,6 +143,11 @@ function Export-OSStrings
 		$mainContent = [xml](Get-Content -Path $file.FullName)
 		[xml]$cdata = $mainContent.XFProjectFile.content."#cdata-section"
 	
+		if (!$cdata.stringResource.name)
+		{
+			continue
+		}
+				
 		$dbString | Add-Member -Name "Name" -MemberType Noteproperty -Value $cdata.stringResource.name
 		$dbString | Add-Member -Name "WorkSpace" -MemberType Noteproperty -Value $cdata.stringResource.workspace
 		$dbString | Add-Member -Name "MaintenanceUnit" -MemberType Noteproperty -Value $cdata.stringResource.maintenanceUnit
