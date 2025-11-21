@@ -6,10 +6,12 @@ COPY LICENSE README.md /
 RUN mkdir -p /usr/local/share/powershell/Modules/OSZipper
 RUN mkdir -p /usr/local/share/powershell/Modules/DocumentationManager
 RUN mkdir -p /usr/local/share/powershell/Modules/StringsManager
+RUN mkdir -p /usr/local/share/powershell/Modules/BRSplitter
 
 COPY ./utils/OSZipper.psm1 /usr/local/share/powershell/Modules/OSZipper/OSZipper.psm1
 COPY ./utils/DocumentationManager.psm1 /usr/local/share/powershell/Modules/DocumentationManager/DocumentationManager.psm1
 COPY ./utils/StringsManager.psm1 /usr/local/share/powershell/Modules/StringsManager/StringsManager.psm1
+COPY ./utils/BRSplitter.psm1 /usr/local/share/powershell/Modules/BRSplitter/BRSplitter.psm1
 
 COPY entrypoint.ps1 /entrypoint.ps1
 

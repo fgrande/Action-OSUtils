@@ -6,6 +6,7 @@ Available actions are:
 
 - ChkStrings
 - GetSources
+- ExtractBR
 
 
 
@@ -50,4 +51,27 @@ Example:
           osSourcesTempDir: TempSrc
           osNamespacePrefix: AWCommons
           osAssemblyName: Commons
+
+
+
+## ExtractBR
+
+This action extract the Business Rules sources from the XML files, to have all the source code available in a single directory, ready to be propagated for installation.
+
+Parameters are:
+
+- ***osAction*** : ExtractBR
+- ***osXFProject*** : The xfProject name, usually on the root of the project.
+- ***osSourcesTempDir*** : The (new) directory under the project's root, to use as destination of the extracted files. If not specified, is TempSrc.
+- ***osSourcesTempDir*** : The (new) directory under the project's root, to use as destination of the extracted files. If not specified, is TempSrc.
+- ***osVersion*** : version to put in the resulting XML file. If not specified the default is 8.5.1.17017.
+
+Example:
+
+      - uses: fgrande/Action-OSUtils@master
+        name: Extract BRules
+        with:
+          osAction: ExtractBR
+          osXFProject: AWUtils.xfProj
+          osSourcesTempDir: TempSrc
 

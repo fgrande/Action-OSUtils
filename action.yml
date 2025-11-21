@@ -36,4 +36,5 @@ runs:
     - "\"${{ inputs.osSourcesTempDir }}\""
     - "\"${{ inputs.osNamespacePrefix }}\""
     - "\"${{ inputs.osAssemblyName }}\""
+    - "\"${{ inputs.osVersion }}\""
 

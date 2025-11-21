@@ -8,6 +8,7 @@ $osXFProject = $args[2]
 $osSourcesTempDir = $args[3]
 $osNamespacePrefix = $args[4]
 $osAssemblyName = $args[5]
+$osVersion = $args[6]
 
 Write-Host "Parameters"
 Write-Host "osAction          : " $osAction
@@ -16,6 +17,7 @@ Write-Host "osXFProject       : " $osXFProject
 Write-Host "osSourcesTempDir  : " $osSourcesTempDir
 Write-Host "osNamespacePrefix : " $osNamespacePrefix
 Write-Host "osAssemblyName    : " $osAssemblyName
+Write-Host "osVersion         : " $osVersion
 
 switch ($osAction.ToLower())
 {
@@ -44,6 +46,16 @@ switch ($osAction.ToLower())
         $sourcesLocation = "${Env:GITHUB_WORKSPACE}/${osSourcesTempDir}"
 
         Format-OSSources -sourceXFProject $xfprojectLocation -destPath $sourcesLocation -wsNamespacePrefix $osNamespacePrefix -wsAssemblyName $osAssemblyName
+    }
+    'extractbr'
+    {
+        Write-Host "Extract BRules"
+        $xfprojectLocation = "${Env:GITHUB_WORKSPACE}/${osXFProject}"
+        Write-Host "Location : " $xfprojectLocation
+
+        $sourcesLocation = "${Env:GITHUB_WORKSPACE}/${osSourcesTempDir}"
+
+        Split-BRules -sourceXFProject $xfprojectLocation -destPath $sourcesLocation -osVersion $osVersion
     }
 }
 
