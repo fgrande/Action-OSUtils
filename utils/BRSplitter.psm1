@@ -85,7 +85,7 @@ function Split-BRules
 			{
 				Remove-Item $zipFileName
 			}
-			tar -acf $zipFileName "*.xml"
+			Compress-Archive -Path "*.xml" -DestinationPath $zipFileName
 		}
 		else 
 		{
@@ -97,8 +97,8 @@ function Split-BRules
 
 				$sourceFilename = [io.path]::GetFileName($fileName)
 
-				Write-Host "Zipping ${fileName} => $zipFileName"
-				tar -acf $zipFileName $sourceFilename
+				Write-Host "Zipping $sourceFilename => $zipFileName"
+				Compress-Archive -Path $sourceFilename -DestinationPath $zipFileName
 			}
 		}
 
