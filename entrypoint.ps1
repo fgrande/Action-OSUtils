@@ -55,7 +55,7 @@ switch ($osAction.ToLower())
 
         $sourcesLocation = "${Env:GITHUB_WORKSPACE}/${osSourcesTempDir}"
 
-        Split-BRules -sourceXFProject $xfprojectLocation -destPath $sourcesLocation -osVersion $osVersion
+        Split-BRules -sourceXFProject $xfprojectLocation -destPath $sourcesLocation -osVersion $osVersion -zipped
     }
     default
     {

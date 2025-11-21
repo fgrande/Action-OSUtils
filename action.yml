@@ -11,11 +11,11 @@ inputs:
     required: false
     default: "it-IT,en-US,fr-FR"
   osXFProject:
-    description: 'XFProject Name (with extension, for GetSources)'
+    description: 'XFProject Name (with extension, for GetSources/ExtractBR)'
     required: false
     default: ''
   osSourcesTempDir:
-    description: 'Sources extraction destination Temp Dir (on project root, for GetSources)'
+    description: 'Sources extraction destination Temp Dir (on project root, for GetSources/ExtractBR)'
     required: false
     default: 'TempSrc'
   osNamespacePrefix:
@@ -26,6 +26,10 @@ inputs:
     description: 'Assembly Name to substitute __WsAssemblyName (GetSources)'
     required: false
     default: ''
+  osVersion:
+    description: 'OneStream BR Version (ExtractBR)'
+    required: false
+    default: '8.5.1.17017'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -37,4 +41,5 @@ runs:
     - "\"${{ inputs.osNamespacePrefix }}\""
     - "\"${{ inputs.osAssemblyName }}\""
     - "\"${{ inputs.osVersion }}\""
+
 

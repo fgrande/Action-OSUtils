@@ -24,7 +24,9 @@ function Split-BRules
 	  [string] $sourceXFProject,
 	  [Parameter(Mandatory=$true)]
 	  [string] $destPath,
-	  [string] $osVersion="8.5.1.17017"
+	  [string] $osVersion="8.5.1.17017",
+	  [switch] $zipped,
+	  [string] $zipFileName = ""
 	)
 
 	# Check if the source file name ends with xfProj
@@ -65,9 +67,41 @@ function Split-BRules
 		$fullSourceCode = "$header$sourceCode$footer"
 
 		$finalFullName = Join-Path -Path $destPath -ChildPath $brFileName
-		Write-Host $finalFullName
 
 		$fullSourceCode | Out-File -FilePath $finalFullName
+	}
+
+	if ($zipped)
+	{
+		if ($zipFileName)
+		{
+			# Zip all the destination directory in one zip file
+			$zipFileName = Join-Path -Path $destPath -ChildPath $zipFileName
+			if (Test-Path -Path $zipFileName -PathType leaf)
+			{
+				Remove-Item $zipFileName
+			}
+			tar -acf $zipFileName -C $destPath "*.xml"
+
+			Remove-Item "$destPath\*.xml"
+		}
+		else {
+			foreach ($file in Get-ChildItem -Path $destPath *.xml)
+			{
+				$fileName = $file.FullName
+
+				$zipFileName = [io.path]::GetFileNameWithoutExtension($fileName) + ".zip"
+				$zipFileName = Join-Path -Path $destPath -ChildPath $zipFileName
+
+				$sourceFilename = [io.path]::GetFileName($fileName)
+
+				Write-Host "Zipping ${fileName} => $zipFileName"
+				tar -acf $zipFileName -C $destPath $sourceFilename
+
+				Remove-Item $fileName
+			}
+		}
+		
 	}
 	
 	return $result
