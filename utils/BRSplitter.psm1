@@ -73,6 +73,10 @@ function Split-BRules
 
 	if ($zipped)
 	{
+		$currentDir = Get-Location
+
+		Set-Location $destPath
+
 		if ($zipFileName)
 		{
 			# Zip all the destination directory in one zip file
@@ -81,7 +85,7 @@ function Split-BRules
 			{
 				Remove-Item $zipFileName
 			}
-			tar -acf $zipFileName -C $destPath "*.xml"
+			tar -acf $zipFileName "*.xml"
 
 			Remove-Item "$destPath\*.xml"
 		}
@@ -96,11 +100,13 @@ function Split-BRules
 				$sourceFilename = [io.path]::GetFileName($fileName)
 
 				Write-Host "Zipping ${fileName} => $zipFileName"
-				tar -acf $zipFileName -C $destPath $sourceFilename
+				tar -acf $zipFileName $sourceFilename
 
 				Remove-Item $fileName
 			}
 		}
+
+		Set-Location $currentDir
 		
 	}
 	
