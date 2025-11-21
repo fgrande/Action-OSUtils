@@ -77,6 +77,9 @@ function Split-BRules
 
 		Set-Location $destPath
 
+		$tmpDir = Get-Location
+		Write-Host "Working on dir $tmpDir"
+
 		if ($zipFileName)
 		{
 			# Zip all the destination directory in one zip file
