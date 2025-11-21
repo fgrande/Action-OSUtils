@@ -85,6 +85,8 @@ function Split-BRules
 			{
 				Remove-Item $zipFileName
 			}
+
+			Write-Host "Zipping all XML files => $zipFileName"
 			Compress-Archive -Path "*.xml" -DestinationPath $zipFileName
 		}
 		else 
@@ -102,7 +104,7 @@ function Split-BRules
 			}
 		}
 
-		#Remove-Item "$destPath\*.xml"
+		Remove-Item "$destPath\*.xml"
 
 		Set-Location $currentDir
 		
