@@ -57,6 +57,11 @@ switch ($osAction.ToLower())
 
         Split-BRules -sourceXFProject $xfprojectLocation -destPath $sourcesLocation -osVersion $osVersion
     }
+    default
+    {
+        Write-Host "Unknown Action : $osAction"
+        exit 1
+    }
 }
 
 exit 0
