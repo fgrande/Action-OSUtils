@@ -22,7 +22,12 @@ function Compress-OSProject
 			Remove-Item $zipFileName
 		}
 		
-		tar -acf $zipFileName --exclude .git *
+		Get-ChildItem "." -Directory  | 
+           Where-Object { $_.Name -notin ".git", ".github" } | 
+              Compress-Archive -DestinationPath $zipFileName -Update
+
+        Get-ChildItem "*" -File  | 
+              Compress-Archive -DestinationPath $zipFileName -Update
 	}
 	else
 	{
