@@ -95,13 +95,14 @@ function Split-BRules
 				$fileName = $file.FullName
 
 				$zipFileName = [io.path]::GetFileNameWithoutExtension($fileName) + ".zip"
-				$zipFileName = Join-Path -Path $destPath -ChildPath $zipFileName
+				#$zipFileName = Join-Path -Path $destPath -ChildPath $zipFileName
 
 				$sourceFilename = [io.path]::GetFileName($fileName)
 
 				Write-Host "Zipping ${fileName} => $zipFileName"
 				tar -acf $zipFileName $sourceFilename
 
+				Write-Host "Deleting $fileName"
 				Remove-Item $fileName
 			}
 		}
