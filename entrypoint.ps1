@@ -9,6 +9,8 @@ $osSourcesTempDir = $args[3]
 $osNamespacePrefix = $args[4]
 $osAssemblyName = $args[5]
 $osVersion = $args[6]
+$snippetBaseDir = $args[7]
+$snippetZipFile = $args[8]
 
 Write-Host "Parameters"
 Write-Host "osAction          : " $osAction
@@ -18,6 +20,8 @@ Write-Host "osSourcesTempDir  : " $osSourcesTempDir
 Write-Host "osNamespacePrefix : " $osNamespacePrefix
 Write-Host "osAssemblyName    : " $osAssemblyName
 Write-Host "osVersion         : " $osVersion
+Write-Host "snippetBaseDir    : " $snippetBaseDir
+Write-Host "snippetZipFile    : " $snippetZipFile
 
 switch ($osAction.ToLower())
 {
@@ -56,6 +60,13 @@ switch ($osAction.ToLower())
         $sourcesLocation = "${Env:GITHUB_WORKSPACE}/${osSourcesTempDir}"
 
         Split-BRules -sourceXFProject $xfprojectLocation -destPath $sourcesLocation -osVersion $osVersion -zipped
+    }
+    'buildsnippets'
+    {
+        Write-Host "Build Snippets"
+        $baseDir = "${Env:GITHUB_WORKSPACE}"
+
+        Build-Snippets -baseDir $baseDir -zipFileName $snippetZipFile
     }
     default
     {

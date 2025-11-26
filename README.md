@@ -75,3 +75,23 @@ Example:
           osXFProject: AWUtils.xfProj
           osSourcesTempDir: TempSrc
 
+
+## BuildSnippets
+
+This action builds snippets starting from the AWSnippets project (or other projects with the same structure).
+
+Parameters are:
+
+- ***osAction*** : BuildSnippets
+- ***snippetBaseDir*** : The root of the project.
+- ***snippetZipFile*** : The final zip filename (with path).
+
+Example:
+
+      - uses: fgrande/Action-OSUtils@master
+        name: Build Snippets
+        with:
+          osAction: BuildSnippets
+          snippetBaseDir: 
+          snippetZipFile: /tmp/AWSnippets.zip
+

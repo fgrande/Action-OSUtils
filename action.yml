@@ -30,6 +30,12 @@ inputs:
     description: 'OneStream BR Version (ExtractBR)'
     required: false
     default: '8.5.1.17017'
+  snippetBaseDir:
+    description: 'Snippet Base Dir (BuildSnippet)'
+    required: false
+  snippetZipFile:
+    description: 'Snippet Zip Full FileName (BuildSnippet)'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -41,5 +47,7 @@ runs:
     - "\"${{ inputs.osNamespacePrefix }}\""
     - "\"${{ inputs.osAssemblyName }}\""
     - "\"${{ inputs.osVersion }}\""
+    - "\"${{ inputs.snippetBaseDir }}\""
+    - "\"${{ inputs.snippetZipFile }}\""
 
 
