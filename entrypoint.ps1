@@ -64,7 +64,8 @@ switch ($osAction.ToLower())
     'buildsnippets'
     {
         Write-Host "Build Snippets"
-        $baseDir = "${Env:GITHUB_WORKSPACE}"
+        $baseDir = "${Env:GITHUB_WORKSPACE}/$snippetBaseDir"
+        Write-Host "Location : " $baseDir
 
         Build-Snippets -baseDir $baseDir -zipFileName $snippetZipFile
     }
