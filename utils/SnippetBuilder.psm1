@@ -61,7 +61,7 @@ function Build-Snippets
 
 	$tempXMLFile = New-TemporaryFile
 
-	Write-Host $tempXMLFile
+	#Write-Host $tempXMLFile
 	$xmlHeader | Out-File $tempXMLFile -Append
 
 	foreach ($file in Get-ChildItem -Path $snippetsDir -Recurse -Include *.cs, *.vb)
@@ -141,9 +141,9 @@ function Build-Snippets
 	$tempBasePath = [io.path]::GetDirectoryName($tempXMLFile)
 	$finalFileName = "AWSnippets.xml"
 	$finalFullFileName = [io.path]::Join($tempBasePath, $finalFileName)
-	Write-Host $tempXMLFile
-	Write-Host $tempBasePath
-	Write-Host $finalFullFileName
+	#Write-Host $tempXMLFile
+	#Write-Host $tempBasePath
+	#Write-Host $finalFullFileName
 
 	Rename-Item -Path $tempXMLFile -NewName $finalFileName
 	Compress-Archive -Path $finalFullFileName -DestinationPath $zipFileName -Update
