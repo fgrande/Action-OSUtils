@@ -36,7 +36,7 @@ function Build-Snippets
 		$baseDir = Get-Location
 	}
 
-	$xmlHeader = "<?xml version=""1.0\"" encoding=""utf-8""?>
+	$xmlHeader = "<?xml version=""1.0"" encoding=""utf-8""?>
                   <OneStreamXF version=""6.2.0.11708"">
                     <brSnippetsRoot>
                       <clear author=""$author"" />
@@ -67,6 +67,11 @@ function Build-Snippets
 	foreach ($file in Get-ChildItem -Path $snippetsDir -Recurse -Include *.cs, *.vb)
 	{
 		#Write-Output "Found File $($file.FullName)"
+
+		if ($file.BaseName.ToLower().StartsWith("todo_"))
+		{
+			continue
+		}
 
 		$extension = $file.Extension
 		$subCategory = $file.Directory.BaseName
