@@ -11,6 +11,8 @@ $osAssemblyName = $args[5]
 $osVersion = $args[6]
 $snippetBaseDir = $args[7]
 $snippetZipFile = $args[8]
+$versionFileName = $args[9]
+$buildFileName = $args[10]
 
 Write-Host "Parameters"
 Write-Host "osAction          : " $osAction
@@ -21,7 +23,29 @@ Write-Host "osNamespacePrefix : " $osNamespacePrefix
 Write-Host "osAssemblyName    : " $osAssemblyName
 Write-Host "osVersion         : " $osVersion
 Write-Host "snippetBaseDir    : " $snippetBaseDir
-Write-Host "snippetZipFile    : " $snippetZipFile
+Write-Host "snippetZipFile    : " $snippetZipFile7
+Write-Host "versionFileName   : " $versionFileName
+Write-Host "buildFileName     : " $buildFileName
+
+
+$currentVersion = ""
+$currentBuild = ""
+
+if (($versionFileName) -and (Test-Path("${Env:GITHUB_WORKSPACE}/$versionFileName")))
+{
+    $currentVersion = Get-Content "${Env:GITHUB_WORKSPACE}/$versionFileName"
+}
+
+if (($buildFileName) -and (Test-Path("${Env:GITHUB_WORKSPACE}/$buildFileName")))
+{
+    $currentBuild = Get-Content "${Env:GITHUB_WORKSPACE}/$buildFileName"
+}
+
+$fullVersion = $currentVersion
+if ($fullVersion -and $currentBuild)
+{
+    $fullVersion = "$fullVersion.$currentBuild"
+}
 
 switch ($osAction.ToLower())
 {
@@ -67,7 +91,9 @@ switch ($osAction.ToLower())
         $baseDir = "${Env:GITHUB_WORKSPACE}/$snippetBaseDir"
         Write-Host "Location : " $baseDir
 
-        Build-Snippets -baseDir $baseDir -zipFileName $snippetZipFile
+
+
+        Build-Snippets -baseDir $baseDir -zipFileName $snippetZipFile -version $fullVersion
     }
     default
     {

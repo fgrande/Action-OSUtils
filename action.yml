@@ -36,6 +36,12 @@ inputs:
   snippetZipFile:
     description: 'Snippet Zip Full FileName (BuildSnippet)'
     required: true
+  version:
+    description: 'Filename containing current Version'
+    required: false
+  build:
+    description: 'Filename containing current Build'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -49,5 +55,7 @@ runs:
     - "\"${{ inputs.osVersion }}\""
     - "\"${{ inputs.snippetBaseDir }}\""
     - "\"${{ inputs.snippetZipFile }}\""
+    - "\"${{ inputs.version }}\""
+    - "\"${{ inputs.build }}\""
 
 

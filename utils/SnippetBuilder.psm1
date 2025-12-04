@@ -15,6 +15,9 @@ Name of the resulting zip File
 .Parameter author
 Name of the author. Default is Avvale
 
+.Parameter version
+Optional Version to add to the main name
+
 .Example
 PS> Build-Snippets -baseDir C:\Works\OneStream\Projects\AWSnippets -zipFileName c:\temp\awsnippets.zip
 
@@ -26,7 +29,8 @@ function Build-Snippets
 	  [string] $baseDir,
 	  [Parameter(Mandatory=$true)]
 	  [string] $zipFileName,
-	  [string] $author = "Avvale"
+	  [string] $author = "Avvale",
+	  [string] $version = ""
 	)
 	
 	$result = @()
@@ -77,6 +81,12 @@ function Build-Snippets
 		$subCategory = $file.Directory.BaseName
 		$category = $file.Directory.Parent.BaseName
 		$moduleType = $file.Directory.Parent.Parent.BaseName
+
+		# if we have a version defined, attach it to category
+		if ($version)
+		{
+			$category = "$category ($version)"
+		}
 
 		$name = ""
 		$description = ""
