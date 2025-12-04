@@ -44,7 +44,7 @@ if (($buildFileName) -and (Test-Path("${Env:GITHUB_WORKSPACE}/$buildFileName")))
 $fullVersion = $currentVersion
 if ($fullVersion -and $currentBuild)
 {
-    $fullVersion = "$fullVersion.$currentBuild"
+    $fullVersion = "$fullVersion build $currentBuild"
 }
 
 switch ($osAction.ToLower())
@@ -90,8 +90,6 @@ switch ($osAction.ToLower())
         Write-Host "Build Snippets"
         $baseDir = "${Env:GITHUB_WORKSPACE}/$snippetBaseDir"
         Write-Host "Location : " $baseDir
-
-
 
         Build-Snippets -baseDir $baseDir -zipFileName $snippetZipFile -version $fullVersion
     }
