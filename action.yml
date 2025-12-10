@@ -35,7 +35,7 @@ inputs:
     required: false
   snippetZipFile:
     description: 'Snippet Zip Full FileName (BuildSnippet)'
-    required: true
+    required: false
   version:
     description: 'Filename containing current Version'
     required: false
